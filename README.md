@@ -1,16 +1,7 @@
 # flutter_cal
 
-A new Flutter application.
+基于Flutter实现的计算器功能.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## 功能
+ 1. 首页打印“你好世界”。B站视频：[小鸡计算器(一)](https://www.bilibili.com/video/av42236145)
+ 2. 计算器页面（待更新）。预计于2月17号更新
