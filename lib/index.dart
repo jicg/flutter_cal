@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class IndexPage extends StatelessWidget {
+class IndexPage extends StatefulWidget {
   static const Color PAGE_COLOR = Colors.black;
 
   // 按钮
@@ -31,12 +31,31 @@ class IndexPage extends StatelessWidget {
   static const RKeys = ["/", "*", "-", "+", "="];
 
   @override
+  IndexPageState createState() {
+    return new IndexPageState();
+  }
+}
+
+class IndexPageState extends State<IndexPage> {
+  String _num = "";
+
+  void clickKey(String key) {
+    if ("C".compareTo(key) == 0) {
+      _num = "";
+      key = "";
+    }
+    setState(() {
+      _num += key;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: PAGE_COLOR,
+      backgroundColor: IndexPage.PAGE_COLOR,
       appBar: AppBar(
         title: Text("小鸡计算器"),
-        backgroundColor: PAGE_COLOR,
+        backgroundColor: IndexPage.PAGE_COLOR,
         centerTitle: true,
       ),
       body: Padding(
@@ -44,7 +63,23 @@ class IndexPage extends StatelessWidget {
         child: Container(
             child: Column(
           children: <Widget>[
-            Expanded(child: Center(child: Text("显示区域"))),
+            Expanded(
+                child: SingleChildScrollView(
+              reverse: true,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 10.0),
+                child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Text(
+                      "$_num",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32.0,
+                      ),
+                    )),
+              ),
+            )),
             Container(child: Center(child: _buildBtns()))
           ],
         )),
@@ -56,16 +91,22 @@ class IndexPage extends StatelessWidget {
     return Expanded(
       flex: flex,
       child: FlatButton(
-        onPressed: () => {},
+        onPressed: () {
+          clickKey(num);
+        },
+        padding: EdgeInsets.all(0.0),
         child: Container(
           decoration: BoxDecoration(
-              color: TKeys.contains(num)
-                  ? TOP_BTN_BG
-                  : RKeys.contains(num) ? RIGHT_BTN_BG : NUM_BTN_BG,
+              color: IndexPage.TKeys.contains(num)
+                  ? IndexPage.TOP_BTN_BG
+                  : IndexPage.RKeys.contains(num)
+                      ? IndexPage.RIGHT_BTN_BG
+                      : IndexPage.NUM_BTN_BG,
               shape: flex > 1 ? BoxShape.rectangle : BoxShape.circle,
               borderRadius:
                   flex > 1 ? BorderRadius.all(Radius.circular(1000.0)) : null),
           padding: EdgeInsets.all(20.0),
+          margin: EdgeInsets.all(10.0),
           child: Center(
               child: Text(
             "$num",
@@ -80,16 +121,16 @@ class IndexPage extends StatelessWidget {
     List<Widget> rows = [];
 
     List<Widget> btns = [];
-    int flex =1;
-    for (int i = 0; i < NKeys.length; i++) {
-      String key = NKeys[i];
-      if(key.isEmpty){
+    int flex = 1;
+    for (int i = 0; i < IndexPage.NKeys.length; i++) {
+      String key = IndexPage.NKeys[i];
+      if (key.isEmpty) {
         flex++;
         continue;
-      }else{
-        Widget b = buildFlatButton(key,flex: flex);
+      } else {
+        Widget b = buildFlatButton(key, flex: flex);
         btns.add(b);
-        flex=1;
+        flex = 1;
       }
 
       if ((i + 1) % 4 == 0) {
