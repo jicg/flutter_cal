@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cal/cal.dart';
 
 class IndexPage extends StatefulWidget {
   static const Color PAGE_COLOR = Colors.black;
@@ -39,13 +40,20 @@ class IndexPage extends StatefulWidget {
 class IndexPageState extends State<IndexPage> {
   String _num = "";
 
+  Cal _cal = new Cal();
+
   void clickKey(String key) {
-    if ("C".compareTo(key) == 0) {
-      _num = "";
-      key = "";
-    }
+//    if ("C".compareTo(key) == 0) {
+//      _num = "";
+//      key = "";
+//    }
+//    setState(() {
+//      _num += key;
+//    });
+
+    _cal.addKey(key);
     setState(() {
-      _num += key;
+      _num = _cal.OutPut;
     });
   }
 
