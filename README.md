@@ -9,3 +9,4 @@
  4. 计算器页面（三），实现操作区域。[小鸡计算器(四)](https://www.bilibili.com/video/av44932042)
  5. 计算器页面（四），实现显示区域+计算器算法逻辑。[小鸡计算器(五)](https://www.bilibili.com/video/av45474968)
  6. 初步实现计算器的逻辑。[小鸡计算器(六)](https://www.bilibili.com/video/av45475303)
+ 7. 完善实现计算器的逻辑。[小鸡计算器(七)](https://www.bilibili.com/video/av46172954)
